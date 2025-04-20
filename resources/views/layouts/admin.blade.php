@@ -37,6 +37,9 @@
 
     </header>
 
+    @php
+        $adminMode = request()->query('admin') == '1';
+    @endphp
     <main class="container mt-3">
         @if ($adminMode)
             <div class="alert alert-info">

@@ -11,7 +11,9 @@ class ArticleController extends Controller
     public function index(Request $request)
     {
         $isAdmin = $request->query('admin'); // Get the ?admin=1 from URL
-    
+        if (request()->query('admin') !== '1') {
+            abort(403, 'Unauthorized.');
+        }
         $articles = ArticlesData::getArticles();
     
         return view('admin.dashboard', [
