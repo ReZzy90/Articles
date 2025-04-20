@@ -18,7 +18,8 @@ Route::get('/about', [BlogController::class, 'about'])->name('about-page');
 Route::prefix('admin')->group(function () {
     Route::get('/articles', [ArticleController::class, 'index'])->name('getAllArticles-ByAdmin');
     Route::get('/{id}', [ArticleController::class, 'show'])->name('getAllArticleById-ByAdmin');
-    Route::get('/edit', [ArticleController::class, 'edit'])->name('getAllArticleEdit-ByAdmin');
+    Route::get('/{id}/edit', [ArticleController::class, 'edit'])->name('getArticleEdit-ByAdmin');
+
 });
 
 // Page not-Found

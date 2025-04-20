@@ -25,12 +25,11 @@
             </span>
         <td>{{ $article['published_at'] }}</td>
         <td>
-            <a href="" class="btn bg-info btn-sm">
+            <a href="{{ route('getAllArticleById-ByAdmin', ['id' => $article['id']]) }}" class="btn bg-info btn-sm">
                 Voir
-            </a>
-            <a href="" class="btn bg-warning btn-sm">
-                Modifier
-            </a>
+            </a>            
+            <a href="{{ route('getArticleEdit-ByAdmin', $article['id']) }}" class="btn btn-warning btn-sm">Modifier</a>
+
         </td>
     </tr>
     @endforeach
