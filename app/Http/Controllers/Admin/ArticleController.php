@@ -23,16 +23,28 @@ class ArticleController extends Controller
 
     public function show(Request $request)
     {
-        $articleById = ArticlesData::getArticleById($request->route(('id')));
-        return view('admin.show', ['article' => $articleById]);
+        $articleById = ArticlesData::getArticleById($request->route('id'));
+        $adminMode = $request->query('admin') == '1';
+    
+        return view('admin.show', [
+            'article' => $articleById,
+            'adminMode' => $adminMode
+        ]);
     }
+    
 
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $articleById = ArticlesData::getArticleById($id);
         $allTags = ['PHP', 'Laravel', 'Framework', 'Web', 'Routing', 'URL', 'HTTP', 'Contrôleurs', 'MVC', 'Architecture', 'API', 'Sécurité', 'Sanctum', 'Authentification', 'Performance', 'Optimisation', 'Cache'];
+        $adminMode = $request->query('admin') == '1';
     
-        return view('admin.edit', ['article' => $articleById, 'allTags' => $allTags]);
+        return view('admin.edit', [
+            'article' => $articleById,
+            'allTags' => $allTags,
+            'adminMode' => $adminMode
+        ]);
     }
+    
     
 }
